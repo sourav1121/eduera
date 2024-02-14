@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1,
+    "category_img": "/assets/images/photoshop_category.jpg",
+    "category_name": "Photoshop",
+    "courses": {
+      "id": 11,
+      "photo_url": "/assets/images/photoshop_course.jpg",
+      "title": "Photoshop Master Course: From Beginner to Photoshop Pro",
+      "description": "This Adobe Photoshop Beginner Course will teach a Beginner Photoshop user all essentials of Adobe Photoshop CC",
+      "course_outline": [
+        "What Photoshop is & how to get into it!",
+        "This course is perfect for beginners 'Never used photoshop before'",
+        "Customize the programs layout & feel comfortable",
+        "Understand all photoshop basics & tools",
+        "Understand layers & it's panels",
+        "Understand masks & how to use them",
+        "Understand adjustment layers how to use them",
+        "Working with the pen tool, liquify & puppet warp tool",
+        "Understand setting color profiles, save PSD files & web files",
+        "Working with brush tool, the clone stamp tool & healing brush",
+        "Understand cutting objects out, fixing skin & manipulation",
+        "... and much, much more!"
+      ],
+      "price": "13.99",
+      "lessons": 10,
+      "students": 556
+    }
+  },
+  {
+    "id": 2,
+    "category_img": "/assets/images/content_writing.jpg",
+    "category_name": "Content Writing",
+    "courses": {
+      "id": 12,
+      "photo_url": "/assets/images/content_writing.jpg",
+      "title": "The Content Writing Course",
+      "description": "Next Level Content Writing: Topic Selection, Research, Outlining, Writing, Editing & Publishing Assisted by AI Apps",
+      "course_outline": [
+        "Discover a strategic approach to Content Writing for your own website, or for others",
+        "Understand the different types of Content Writing",
+        "Learn how to optimize your efficiency as a writer, using simple workflows and tools",
+        "Learn about and master the SEO Article Writing method",
+        "Understand which niches to pick, and which ones to avoid in order to grow your site and traffic",
+        "Master topic selection and search intent, to ensure that you are not writing in vain",
+        "Acquire an in depth understanding of which AI (Artificial Intelligence) apps can help, and which are a waste of time",
+        "Sit over my shoulder as I take a Google-optimized article all the way from keyword (topic) research all the way through to publication",
+        "Learn how to outline articles rapidly and thoroughly - a critical skill for success",
+        "Discover my own research process that saves huge amounts of time in creating original and valuable content, and in fact checking",
+        "Know the best approach to writing at high quality and speed",
+        "Acquire a clear cut editing and proofing process that saves huge amounts of time and effort",
+        "Learn the very best ways to optimize articles to stand the very best chance for Google to rank them, so that you get clicks to your website",
+        "Get clear about the best ways to structure, format, and publish articles in WordPress",
+        "Understand how to track your results simply, accurately, and for free"
+      ],
+      "price": "15.99",
+      "lessons": 25,
+      "students": 124
+    }
+  },
+  {
+    "id": 3,
+    "category_img": "/assets/images/marketing_category.jpg",
+    "category_name": "Marketing",
+    "courses": {
+      "id": 13,
+      "photo_url": "/assets/images/product_marketing.jpg",
+      "title": "Become a Product Marketing Manager | Product Management MBA",
+      "description": "Product Marketing Strategy : Marketing New Product : Product to Market : Product Promotion : Product Owner Launch | MBA",
+      "course_outline": [
+        "Potentially Get Hired As A Product Marketing Manager",
+        "Product Management",
+        "How To Launch A New Product",
+        "Market research",
+        "Branding",
+        "Product marketing strategy",
+        "Product Marketing Psychology",
+        "Marketing & Lead Generation",
+        "& So Much More!"
+      ],
+      "price": "18.99",
+      "lessons": 16,
+      "students": 888
+    }
+  },
+  {
+    "id": 4,
+    "category_img": "/assets/images/developer_category.jpg",
+    "category_name": "Web Developers",
+    "courses": {
+      "id": 14,
+      "photo_url": "/assets/images/web_developer.jpg",
+      "title": "The Web Developer Bootcamp 2022",
+      "description": "COMPLETELY REDONE - The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
+      "course_outline": [
+        "The ins and outs of HTML5, CSS3, and Modern JavaScript for 2021",
+        "Make REAL web applications using cutting-edge technologies",
+        "Create responsive, accessible, and beautiful layouts",
+        "Recognize and prevent common security exploits like SQL-Injection & XSS",
+        "Continue to learn and grow as a developer, long after the course ends",
+        "Create a blog application from scratch using Node, Express, and MongoDB.",
+        "Create a complicated yelp-like application from scratch",
+        "Deploy your applications and work with cloud databases",
+        "Create static HTML and CSS portfolio sites and landing pages",
+        "Think like a developer. Become an expert at Googling code questions!",
+        "Create complex HTML forms with validations",
+        "Implement full authentication from scratch!",
+        "Use CSS Frameworks including Bootstrap 5, Semantic UI, and Bulma",
+        "Implement responsive navbars on websites"
+      ],
+      "price": "18.99",
+      "lessons": 42,
+      "students": 1124
+    }
+  },
+  {
+    "id": 5,
+    "category_img": "/assets/images/ui_category.png",
+    "category_name": "User Experience",
+    "courses": {
+      "id": 15,
+      "photo_url": "/assets/images/ui_experience.png",
+      "title": "User Experience (UX): The Ultimate Guide to Usability and UX",
+      "description": "Get a job in UX and build your user research and UX design skills with this hands-on user experience training course.",
+      "course_outline": [
+        "Bake UX into your workflow by following a proven, user centred design framework.",
+        "Plan field visits and user interviews to uncover user needs.",
+        "Moderate a usability test and prioritise the observations.",
+        "Create personas, user stories, red routes and user journey maps.",
+        "Uncover and describe users mental models.",
+        "Choose appropriate schemes for classifying and organising information.",
+        "Design and conduct online and offline card sorting sessions.",
+        "Select appropriate user interface design patterns.",
+        "Develop cheap, throwaway prototypes to get quick and frequent feedback from your users.",
+        "Create user interface designs that exploit universal principles of visual design.",
+        "Design usability tests to measure time on task, success rate and user satisfaction.",
+        "Evaluate the usability of systems by applying usability heuristics.",
+        "Prepare for the BCS Foundation Certificate in User Experience."
+      ],
+      "price": "79.99",
+      "lessons": 8,
+      "students": 69
+    }
+  },
+  {
+    "id": 6,
+    "category_img": "/assets/images/animation_category.png",
+    "category_name": "Animation",
+    "courses": {
+      "id": 16,
+      "photo_url": "/assets/images/animation_course.png",
+      "title": "Learn to Animate: Animation Principles",
+      "description": "How to Animate Level 1: the complete guide to Animation Principles in Adobe Animate",
+      "course_outline": [
+        "You will learn the principles of animation, and the tools to become a great animator!",
+        "You will learn how to bring simple objects and shapes to life, and how to make realistic motion.",
+        "You'll learn the important, core principles of animation that form the foundation for animating anything.",
+        "I will walk you through step by step from zero animation to a fully finished character animation!",
+        "I teach you animation techniques and tips that professional animators use in everything they animate",
+        "By the end of this course you will know principles and techniques that you'll use for the rest of your career if you start animating professionally!"
+      ],
+      "price": "11.99",
+      "lessons": 5,
+      "students": 226
+    }
+  }
+]
