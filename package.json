@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "startDev": "nodemon index.js",
+    "start": "nodemon src/server.mjs",
+    "startDev": "nodemon src/server.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,8 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongodb": "^6.3.0"
+    "firebase": "^10.4.0",
+    "firebase-admin": "^11.10.1",
+    "mongodb": "^5.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
