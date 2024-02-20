@@ -4,25 +4,27 @@ import { BSON, ObjectId } from "mongodb";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const categories = req.app.locals.db?.collection("courses");
-  if (categories) {
-    const data = await categories.find({}).toArray();
+  const courses = req.app.locals.db?.collection("courses");
+  if (courses) {
+    const data = await courses
+      .find({}, { projection: { course_outline: 0 } })
+      .toArray();
     res.status(200).send(data);
   }
 });
 
-router.get("/:id", async (req, res) => {
-  const categories = req.app.locals.db?.collection("courses");
-  let id = req.params.id;
-  id = new BSON.ObjectId(id);
-  if (categories) {
-    const data = await categories.find({ _id: id }).toArray();
+router.get("/:categoryId", async (req, res) => {
+  const courses = req.app.locals.db?.collection("courses");
+  let catId = req.params.categoryId;
+  catId = new BSON.ObjectId(catId);
+  if (courses) {
+    const data = await courses.find({ category_id: catId }).toArray();
     res.status(200).send(data);
   }
 });
 
 router.get("/:categoryid/:courseid", async (req, res) => {
-  const categories = req.app.locals.db?.collection("courses");
+  const courses = req.app.locals.db?.collection("courses");
   let catid = req.params.categoryid;
   let crsid = req.params.courseid;
 
@@ -30,15 +32,35 @@ router.get("/:categoryid/:courseid", async (req, res) => {
     catid = new BSON.ObjectId(catid);
     crsid = new BSON.ObjectId(crsid);
   }
-  if (categories) {
-    const data = await categories
-      .find({
-        _id: catid,
-        "courses._id": crsid,
-      })
-      .toArray();
-    res.status(200).json(data);
+  if (courses) {
+    const data = await courses.findOne({
+      category_id: catid,
+      _id: crsid,
+    });
+    res.status(200).send(data);
   }
 });
+
+router.get(
+  "/:categoryid/:courseid/view",
+  checkIfAuthenticated,
+  async (req, res) => {
+    const courses = req.app.locals.db?.collection("courses");
+    let catid = req.params.categoryid;
+    let crsid = req.params.courseid;
+
+    if (catid && crsid) {
+      catid = new BSON.ObjectId(catid);
+      crsid = new BSON.ObjectId(crsid);
+    }
+    if (courses) {
+      const data = await courses.findOne({
+        category_id: catid,
+        _id: crsid,
+      });
+      res.status(200).send(data);
+    }
+  }
+);
 
 export default router;
