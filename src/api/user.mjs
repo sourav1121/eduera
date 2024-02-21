@@ -14,7 +14,7 @@ router.get("/", checkIfAuthenticated, async (req, res) => {
 router.get("/:userId", async (req, res) => {
   const userCollection = req.app.locals.db.collection("user");
   const user = await userCollection.findOne({ firebaseId: req.params.userId });
-  res.json(user);
+  res.send(user);
 });
 
 router.post("/register", async (req, res) => {
