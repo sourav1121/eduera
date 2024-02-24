@@ -1,4 +1,6 @@
 import express from "express";
+import multer from "multer";
+import path from "path";
 import cors from "cors";
 import config from "./config/index.mjs";
 import db from "./config/db.mjs";
@@ -7,17 +9,39 @@ import coursesRouter from "./api/courses.mjs";
 import categoriesRouter from "./api/categories.mjs";
 import Stripe from "stripe";
 import { checkIfAuthenticated } from "./middlewares/authMiddleware.mjs";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const storage = multer.diskStorage({
+  destination: "public/assets/images/",
+  filename: (req, file, cb) => {
+    // Use the original file name but ensure it has a .jpg extension
+    const filename = path.parse(file.originalname).name;
+    const extension = ".jpg";
+    cb(null, filename + extension);
+  },
+});
+
+const upload = multer({ storage: storage });
 
 const stripe = new Stripe(
   "sk_test_51LqrMSFWwK1Md247hhoW2WFX8Fo4lLOlK8BcfAy0WDnjPmd6CZQXgplWvrKZYmtucd2ZoYYh3zKw1a4YOXCcpByn00YGLHlS03"
 );
 
 const app = express();
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 db(config.MONGO_URI, app);
 
 app.use(cors({ origin: true }));
 // app.use(express.json());
+app.use((req, res, next) => {
+  console.log(`Received ${req.method} request for ${req.url}`);
+  next();
+});
 
 app.use("/api/user", express.json(), userRouter);
 app.use("/api/courses", express.json(), coursesRouter);
@@ -91,6 +115,33 @@ app.post(
     res.json({ id: session.id });
   }
 );
+
+app.post("/upload", upload.single("photo"), async (req, res) => {
+  console.log("Received file upload request");
+
+  try {
+    // The path where multer saves the file
+    let photoPath = req.file.path;
+    console.log("File saved at:", photoPath);
+    // Replace backslashes with forward slashes for URL compatibility
+    photoPath = photoPath.replace(/\\/g, "/");
+    // Remove the 'public' part of the path for URL compatibility
+    photoPath = photoPath.replace("public/", "");
+    // Return the path to the client
+    res.status(200).json({ path: photoPath });
+  } catch (error) {
+    console.error("Error:", error);
+    res
+      .status(500)
+      .json({ message: "An error occurred while uploading the file" });
+  }
+});
+
+app.get("/test", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "..", "public", "assets", "images", "AWD.jpg")
+  );
+});
 
 app.listen(config.PORT, () =>
   console.log(`App listening on PORT ${config.PORT}`)

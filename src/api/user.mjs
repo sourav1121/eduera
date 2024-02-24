@@ -17,6 +17,18 @@ router.get("/:userId", async (req, res) => {
   res.send(user);
 });
 
+router.get("/:userId/courses", async (req, res) => {
+  const userCollection = req.app.locals.db.collection("user");
+  const user = await userCollection.findOne({ firebaseId: req.params.userId });
+  const courses = req.app.locals.db?.collection("courses");
+  if (courses) {
+    const data = await courses
+      .find({ instructor_id: req.params.userId })
+      .toArray();
+    res.status(200).send(data);
+  }
+});
+
 router.post("/register", async (req, res) => {
   const { email, password, role } = req.body;
 
