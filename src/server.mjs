@@ -27,9 +27,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-const stripe = new Stripe(
-  "sk_test_51LqrMSFWwK1Md247hhoW2WFX8Fo4lLOlK8BcfAy0WDnjPmd6CZQXgplWvrKZYmtucd2ZoYYh3zKw1a4YOXCcpByn00YGLHlS03"
-);
+const stripe = new Stripe(proccess.env.STRIPE_SECRET_KEY);
 
 const app = express();
 app.use(express.static(path.join(__dirname, "..", "public")));
