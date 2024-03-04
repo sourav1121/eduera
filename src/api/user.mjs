@@ -30,7 +30,7 @@ router.get("/:userId/courses", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const { email, password, role } = req.body;
+  const { email, password, state } = req.body;
 
   if (!email || !password) {
     return res.status(400).json({
@@ -44,20 +44,25 @@ router.post("/register", async (req, res) => {
       password,
     });
 
+    console.log("New Firebase User:", newFirebaseUser);
+
     if (newFirebaseUser) {
       const userCollection = req.app.locals.db.collection("user");
-      await userCollection.insertOne({
+      const insertResult = await userCollection.insertOne({
         email,
         firebaseId: newFirebaseUser.uid,
-        role,
-        permissions: role === "student" ? "enrollInCourse" : "createCourse",
-        ...(role === "student" ? { enrollments: [] } : { myCourses: [] }),
+        role: state,
+        permissions: state === "student" ? "enrollInCourse" : "createCourse",
+        enrollments: [],
       });
+
+      console.log("MongoDB Insert Result:", insertResult);
     }
     return res
       .status(200)
       .json({ success: "Account created successfully. Please sign in." });
   } catch (err) {
+    console.error("Error:", err);
     if (err.code === "auth/email-already-exists") {
       return res
         .status(400)
@@ -86,9 +91,8 @@ router.post("/storeProviderUser", async (req, res) => {
         firebaseId: fuid,
         role,
         permissions: role === "student" ? "enrollInCourse" : "createCourse",
-        ...(role === "student" ? { enrollments: [] } : { myCourses: [] }),
+        enrollments: [],
       });
-      console.log(`User inserted with _id: ${result.insertedId}`);
       return res.status(200).json({ success: "success" });
     } else {
       // If the user already exists, do nothing and return a success message

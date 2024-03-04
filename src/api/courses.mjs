@@ -163,6 +163,10 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   const courses = req.app.locals.db?.collection("courses");
+  const users = req.app.locals.db?.collection("user");
+
+  // You would need the userId of the specific user
+  const userId = req.body.userId;
 
   try {
     // Convert _id to ObjectId
@@ -172,6 +176,12 @@ router.delete("/:id", async (req, res) => {
     const result = await courses.deleteOne({ _id });
 
     if (result.deletedCount > 0) {
+      // Remove the course from the enrollments array of the specific user
+      await users.updateOne(
+        { _id: new ObjectId(userId) },
+        { $pull: { enrollments: _id } }
+      );
+
       res.status(200).json({ message: "Course deleted successfully" });
     } else {
       res.status(404).json({ message: "Course not found" });
